@@ -9,7 +9,7 @@ All Rights Reserved
   <modelVersion>4.0.0</modelVersion>
   <name>QTIWorks JQTIPlus</name>
   <artifactId>qtiworks-jqtiplus</artifactId>
-  <packaging>jar</packaging>
+  <packaging>bundle</packaging>
   <parent>
     <groupId>uk.ac.ed.ph.qtiworks</groupId>
     <artifactId>qtiworks</artifactId>
@@ -69,6 +69,24 @@ All Rights Reserved
           </includes>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <version>2.3.7</version>
+        <configuration>
+          <instructions>
+            <Bundle-SymbolicName>${project.artifactId}</Bundle-SymbolicName>
+            <Bundle-Copyright>(c) 2012-2013, The University of Edinburgh</Bundle-Copyright>
+            <Import-Package>
+              *
+            </Import-Package>
+            <Export-Package>
+              uk.ac.ed.ph.jqtiplus.*;version=1.0.0
+            </Export-Package>
+          </instructions>
+        </configuration>
+      </plugin>    
     </plugins>
   </build>
 </project>
