@@ -39,6 +39,7 @@ import uk.ac.ed.ph.jqtiplus.attribute.value.IdentifierAttribute;
 import uk.ac.ed.ph.jqtiplus.group.NodeGroup;
 import uk.ac.ed.ph.jqtiplus.group.NodeGroupList;
 import uk.ac.ed.ph.jqtiplus.node.content.BodyElement;
+import uk.ac.ed.ph.jqtiplus.node.content.ContentType;
 import uk.ac.ed.ph.jqtiplus.node.test.BranchRule;
 import uk.ac.ed.ph.jqtiplus.serialization.QtiSaxDocumentFirer;
 import uk.ac.ed.ph.jqtiplus.types.Identifier;
@@ -263,6 +264,10 @@ public abstract class AbstractNode implements QtiNode {
 
     @Override
     public final void validate(final ValidationContext context) {
+        if (ContentType.isDeprecatedQtiClassNames(getQtiClassName())) {
+            context.fireValidationWarning(getParent(), getQtiClassName() + " is a deprecated tag");
+        }
+
         /* Do basic checking on individual Attributes */
         attributes.validateBasic(context);
 

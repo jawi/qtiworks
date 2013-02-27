@@ -44,20 +44,27 @@ import uk.ac.ed.ph.jqtiplus.node.content.variable.RubricBlock;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.hypertext.A;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.image.Img;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dd;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dir;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dl;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dt;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Li;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Menu;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Ol;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Ul;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.object.Applet;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.object.Param;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.B;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Big;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Center;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Hr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.I;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.S;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Small;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Strike;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Sub;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Sup;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Tt;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.U;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Caption;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Col;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Colgroup;
@@ -71,6 +78,7 @@ import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Tr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Abbr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Acronym;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Address;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.BaseFont;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Blockquote;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Br;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Cite;
@@ -78,6 +86,7 @@ import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Code;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Dfn;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Div;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Em;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Font;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H1;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H2;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H3;
@@ -141,21 +150,25 @@ public class ContentTest {
             { "a", new A(null) },
             { "abbr", new Abbr(null) },
             { "acronym", new Acronym(null) },
-            { "address", new Address(null) }, 
+            { "address", new Address(null) },
+            { "applet", new Applet(null) },
             { "associableHotspot", new AssociableHotspot(null) },
             { "associateInteraction", new AssociateInteraction(null) },
             { "b", new B(null) },
+            { "basefont", new BaseFont(null) },
             { "big", new Big(null) },
             { "blockquote", new Blockquote(null) },
             { "br", new Br(null) },
             { "caption", new Caption(null) },
+            { "center", new Center(null) },
             { "choiceInteraction", new ChoiceInteraction(null) },
-            { "cite", new Cite(null) }, { "code", new Code(null) }, 
+            { "cite", new Cite(null) }, { "code", new Code(null) },
             { "col", new Col(null) },
-            { "colgroup", new Colgroup(null) }, 
-            { "dd", new Dd(null) }, 
+            { "colgroup", new Colgroup(null) },
+            { "dd", new Dd(null) },
             { "dfn", new Dfn(null) },
             { "div", new Div(null) },
+            { "dir", new Dir(null) },
             { "dl", new Dl(null) },
             { "drawingInteraction", new DrawingInteraction(null) },
             { "dt", new Dt(null) },
@@ -164,17 +177,18 @@ public class ContentTest {
             { "extendedTextInteraction", new ExtendedTextInteraction(null) },
             { "feedbackBlock", new FeedbackBlock(null) },
             { "feedbackInline", new FeedbackInline(null) },
+            { "font", new Font(null) },
             { "gap", new Gap(null) },
             { "gapImg", new GapImg(null) },
             { "gapMatchInteraction", new GapMatchInteraction(null) },
             { "gapText", new GapText(null) },
-            { "graphicAssociateInteraction", new GraphicAssociateInteraction(null) }, 
+            { "graphicAssociateInteraction", new GraphicAssociateInteraction(null) },
             { "graphicGapMatchInteraction", new GraphicGapMatchInteraction(null) },
             { "graphicOrderInteraction", new GraphicOrderInteraction(null) },
             { "h1", new H1(null) },
             { "h2", new H2(null) },
             { "h3", new H3(null) },
-            { "h4", new H4(null) }, 
+            { "h4", new H4(null) },
             { "h5", new H5(null) },
             { "h6", new H6(null) },
             { "hotspotChoice", new HotspotChoice(null) },
@@ -182,7 +196,7 @@ public class ContentTest {
             { "hottext", new Hottext(null) },
             { "hottextInteraction", new HottextInteraction(null) },
             { "hr", new Hr(null) },
-            { "i", new I(null) }, 
+            { "i", new I(null) },
             { "img", new Img(null) },
             { "inlineChoice", new InlineChoice(null) },
             { "inlineChoiceInteraction", new InlineChoiceInteraction(null) },
@@ -191,7 +205,8 @@ public class ContentTest {
             { "li", new Li(null) },
             { "matchInteraction", new MatchInteraction(null) },
             { "math", new uk.ac.ed.ph.jqtiplus.node.content.mathml.Math(null) },
-            { "mediaInteraction", new MediaInteraction(null) }, 
+            { "mediaInteraction", new MediaInteraction(null) },
+            { "menu", new Menu(null) },
             { "object", new uk.ac.ed.ph.jqtiplus.node.content.xhtml.object.Object(null) },
             { "ol", new Ol(null) },
             { "orderInteraction", new OrderInteraction(null) },
@@ -203,29 +218,32 @@ public class ContentTest {
             { "printedVariable", new PrintedVariable(null) },
             { "prompt", new Prompt(null) },
             { "q", new Q(null) },
-            { "rubricBlock", new RubricBlock(null) }, 
-            { "samp", new Samp(null) }, 
+            { "rubricBlock", new RubricBlock(null) },
+            { "s", new S(null) },
+            { "samp", new Samp(null) },
             { "selectPointInteraction", new SelectPointInteraction(null) },
-            { "simpleAssociableChoice", new SimpleAssociableChoice(null) }, 
+            { "simpleAssociableChoice", new SimpleAssociableChoice(null) },
             { "simpleChoice", new SimpleChoice(null) },
             { "simpleMatchSet", new SimpleMatchSet(null) },
-            { "sliderInteraction", new SliderInteraction(null) }, 
+            { "sliderInteraction", new SliderInteraction(null) },
             { "small", new Small(null) },
             { "span", new Span(null) },
-            { "strong", new Strong(null) }, 
+            { "strike", new Strike(null) },
+            { "strong", new Strong(null) },
             { "sub", new Sub(null) },
-            { "sup", new Sup(null) }, 
+            { "sup", new Sup(null) },
             { "table", new Table(null) },
-            { "tbody", new Tbody(null) }, 
+            { "tbody", new Tbody(null) },
             { "td", new Td(null) },
             { "textEntryInteraction", new TextEntryInteraction(null) },
-            { "textRun", new TextRun(null, "") }, 
-            { "tfoot", new Tfoot(null) }, 
+            { "textRun", new TextRun(null, "") },
+            { "tfoot", new Tfoot(null) },
             { "th", new Th(null) },
-            { "thead", new Thead(null) }, 
+            { "thead", new Thead(null) },
             { "tr", new Tr(null) },
             { "tt", new Tt(null) },
-            { "ul", new Ul(null) }, 
+            { "u", new U(null) },
+            { "ul", new Ul(null) },
             { "uploadInteraction", new UploadInteraction(null) },
             { "var", new Var(null) }
     });

@@ -175,6 +175,24 @@ public class QtiXmlReaderTest {
         assertEquals(1, parseResult.getUnsupportedSchemaNamespaces().size()); /* (Unsupported) */
     }
 
+    @Test
+    public void testReadUnknownTagInItemBodyOk() throws Exception {
+        final String fileName = "unknowntag.xml";
+        final XmlReadResult result = readTestFile(fileName, true);
+        final XmlParseResult parseResult = result.getXmlParseResult();
+
+        assertNotNull(result.getDocument());
+        assertEquals(makeSystemId(fileName), parseResult.getSystemId());
+        assertTrue(parseResult.isParsed());
+        assertTrue(parseResult.isValidated());
+        assertFalse(parseResult.isSchemaValid());
+        assertEquals(0, parseResult.getFatalErrors().size());
+        assertEquals(3, parseResult.getErrors().size()); // font tag is not valid
+        assertEquals(0, parseResult.getWarnings().size());
+        assertEquals(1, parseResult.getSupportedSchemaNamespaces().size()); /* (QTI 2.1) */
+        assertEquals(0, parseResult.getUnsupportedSchemaNamespaces().size()); /* (Unsupported) */
+    }
+
     //-------------------------------
 
     private XmlReadResult readTestFile(final String testFileName, final boolean schemaValiadating) throws XmlResourceNotFoundException {

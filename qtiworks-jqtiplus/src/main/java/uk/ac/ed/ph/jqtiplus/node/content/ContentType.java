@@ -53,23 +53,31 @@ import uk.ac.ed.ph.jqtiplus.node.content.variable.FeedbackInline;
 import uk.ac.ed.ph.jqtiplus.node.content.variable.PrintedVariable;
 import uk.ac.ed.ph.jqtiplus.node.content.variable.RubricBlock;
 import uk.ac.ed.ph.jqtiplus.node.content.variable.TextOrVariable;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.DeprecatedElement;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.hypertext.A;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.image.Img;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dd;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dir;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dl;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Dt;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Li;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Menu;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Ol;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.list.Ul;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.object.Applet;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.object.Param;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.B;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Big;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Center;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Hr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.I;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.S;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Small;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Strike;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Sub;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Sup;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.Tt;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.U;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Caption;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Col;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Colgroup;
@@ -83,6 +91,7 @@ import uk.ac.ed.ph.jqtiplus.node.content.xhtml.table.Tr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Abbr;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Acronym;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Address;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.BaseFont;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Blockquote;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Br;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Cite;
@@ -90,6 +99,7 @@ import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Code;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Dfn;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Div;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Em;
+import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.Font;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H1;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H2;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.text.H3;
@@ -414,7 +424,16 @@ public enum ContentType {
             return new Div(parent);
         }
     },
+    /**
+     * div
+     */
+    DIR(Dir.QTI_CLASS_NAME, Dir.class) {
 
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Dir(parent);
+        }
+    },
     INFOCONTROL(InfoControl.QTI_CLASS_NAME, InfoControl.class) {
 
         @Override
@@ -451,6 +470,13 @@ public enum ContentType {
         @Override
         public QtiNode create(final QtiNode parent) {
             return new Math(parent);
+        }
+    },
+    MENU(Menu.QTI_CLASS_NAME, Menu.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Menu(parent);
         }
     },
     /**
@@ -501,6 +527,13 @@ public enum ContentType {
         @Override
         public QtiNode create(final QtiNode parent) {
             return new Table(parent);
+        }
+    },
+    U(uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.U.QTI_CLASS_NAME, uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.U.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new U(parent);
         }
     },
     /**
@@ -584,6 +617,13 @@ public enum ContentType {
             return new Br(parent);
         }
     },
+    CENTER(Center.QTI_CLASS_NAME, Center.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Center(parent);
+        }
+    },
     /**
      * img
      */
@@ -612,6 +652,13 @@ public enum ContentType {
         @Override
         public QtiNode create(final QtiNode parent) {
             return new Hottext(parent);
+        }
+    },
+    APPLET(Applet.QTI_CLASS_NAME, Applet.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Applet(parent);
         }
     },
     /**
@@ -675,6 +722,16 @@ public enum ContentType {
         }
     },
     /**
+     * basefont
+     */
+    BASEFONT(BaseFont.QTI_CLASS_NAME, BaseFont.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new BaseFont(parent);
+        }
+    },
+    /**
      * big
      */
     BIG(Big.QTI_CLASS_NAME, Big.class) {
@@ -735,6 +792,16 @@ public enum ContentType {
         }
     },
     /**
+     * feedbackInline
+     */
+    FONT(Font.QTI_CLASS_NAME, Font.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Font(parent);
+        }
+    },
+    /**
      * i
      */
     I(uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.I.QTI_CLASS_NAME, uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.I.class) {
@@ -762,6 +829,13 @@ public enum ContentType {
         @Override
         public QtiNode create(final QtiNode parent) {
             return new Q(parent);
+        }
+    },
+    S(uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.S.QTI_CLASS_NAME, uk.ac.ed.ph.jqtiplus.node.content.xhtml.presentation.S.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new S(parent);
         }
     },
     /**
@@ -802,6 +876,13 @@ public enum ContentType {
         @Override
         public QtiNode create(final QtiNode parent) {
             return new Strong(parent);
+        }
+    },
+    STRIKE(Strike.QTI_CLASS_NAME, Strike.class) {
+
+        @Override
+        public QtiNode create(final QtiNode parent) {
+            return new Strike(parent);
         }
     },
     /**
@@ -1127,6 +1208,8 @@ public enum ContentType {
 
     private static Map<String, ContentType> interactionTypes;
 
+    private static Map<String, ContentType> deprecatedTypes;
+
     static {
         contentTypes = new HashMap<String, ContentType>();
         for (final ContentType type : ContentType.values()) {
@@ -1200,6 +1283,13 @@ public enum ContentType {
         for (final ContentType type : ContentType.values()) {
             if (Interaction.class.isAssignableFrom(type.clazz)) {
                 interactionTypes.put(type.qtiClassName, type);
+            }
+        }
+
+        deprecatedTypes = new HashMap<String, ContentType>();
+        for (final ContentType type : ContentType.values()) {
+            if (DeprecatedElement.class.isAssignableFrom(type.clazz)) {
+                deprecatedTypes.put(type.qtiClassName, type);
             }
         }
     }
@@ -1376,6 +1466,13 @@ public enum ContentType {
 
     public static Set<String> getInteractionTypeQtiClassNames() {
         return interactionTypes.keySet();
+    }
+
+    /**
+     * Return whether or not a given element name is actually a deprecated HTML4 element.
+     */
+    public static boolean isDeprecatedQtiClassNames(final String name) {
+        return deprecatedTypes.containsKey(name);
     }
 
     /**
