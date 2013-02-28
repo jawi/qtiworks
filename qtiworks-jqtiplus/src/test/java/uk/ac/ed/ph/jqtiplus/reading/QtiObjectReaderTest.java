@@ -54,14 +54,23 @@ import java.util.List;
 import org.junit.Test;
 
 /**
- * FIXME: Document this type
+ * Test cases for {@link QtiObjectReader}.
  *
  * @author Jan Willem Janssen
  */
 public class QtiObjectReaderTest {
 
+    /**
+     * Tests that the parser allows deprecated HTML4 tags to exist in the item body.
+     * <p>
+     * QTI specifies that the itembody can only contain XHTML 1.0 strict elements.
+     * In case no validation is performed, the parser could also allow all deprecated
+     * HTML4 elements to appear inside an itembody (making it compliant to XHTML 1.0
+     * loose).
+     * </p>
+     */
     @Test
-    public void testLoadUnknownTagOk() throws Exception {
+    public void testAssessmentItemWithHTML4DeprecatedTags() throws Exception {
         final String fileName = "unknowntag.xml";
         final QtiObjectReader reader = createObjectReader(false);
 
@@ -92,6 +101,27 @@ public class QtiObjectReaderTest {
         assertEquals(1, searchResult.size());
     }
 
+    /**
+     * Tests that the parser allows XHTML 1.0 strict elements to exist in the
+     * item body.
+     */
+    @Test
+    public void testValidAssessmentItem() throws Exception {
+        final String fileName = "choice.xml";
+        final QtiObjectReader reader = createObjectReader(false);
+
+        final QtiObjectReadResult<AssessmentItem> rootNode = reader.lookupRootNode(makeSystemId(fileName), AssessmentItem.class);
+
+        final XmlParseResult parseResult = rootNode.getXmlParseResult();
+        assertEquals(makeSystemId(fileName), parseResult.getSystemId());
+        assertTrue(parseResult.isParsed());
+        assertFalse(parseResult.isValidated());
+        assertFalse(parseResult.isSchemaValid());
+
+        final AssessmentItem assessmentItem = rootNode.getRootNode();
+        assertNotNull(assessmentItem);
+    }
+
     private QtiObjectReader createObjectReader(final boolean schemaValiadating) throws XmlResourceNotFoundException {
         final QtiXmlReader reader = new QtiXmlReader();
         final ResourceLocator inputResourceLocator = new ClassPathResourceLocator();
@@ -101,5 +131,4 @@ public class QtiObjectReaderTest {
     private URI makeSystemId(final String testFileName) {
         return URI.create("classpath:/uk/ac/ed/ph/jqtiplus/reading/" + testFileName);
     }
-
 }
