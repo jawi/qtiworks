@@ -12,6 +12,34 @@ All Rights Reserved
   </nav>
   <h2>QTIWorks Release Notes (Development)</h2>
 
+  <h3>1.0-DEV26 [Development] (07/03/2013)</h3>
+  <p>
+    This snapshot adds support for delivering tests containing multiple <code>testPart</code>s, and now
+    evaluations any <code>preCondition</code>s declared at <code>testPart</code> level. It also completes
+    the implementation of <code>testFeedback</code> to support both <code>during</code> and <code>atEnd</code>
+    feedback, at both test and test part level.
+  </p>
+  <p>
+    Note: This snapshot fixes a bug in the setting of default values for outcome variables in tests. As a result,
+    the <code>showHide</code> attribute would not have been working correctly when referencing outcome variables
+    defined to have a fixed default value. You may therefore need to check existing assessments to ensure they now
+    behave correctly.
+  </p>
+  <p>
+    See development snapshots at <a href="https://www2.ph.ed.ac.uk/qtiworks-dev">https://www2.ph.ed.ac.uk/qtiworks-dev</a>.
+  </p>
+
+  <h3>1.0-M4 [Production] (07/03/2013)</h3>
+  <p>
+    This is basically 1.0-DEV25 with some further behind-the-scenes changes added since then. There is no noticeable
+    change in functionality between M3 and M4, though we have dropped some obscure features that were never really used
+    that much (such as the "playback" feature when running single items).
+  </p>
+  <p>
+    See production releases at <a href="https://www2.ph.ed.ac.uk/qtiworks">https://www2.ph.ed.ac.uk/qtiworks</a>, and
+    development snapshots at <a href="https://www2.ph.ed.ac.uk/qtiworks-dev">https://www2.ph.ed.ac.uk/qtiworks-dev</a>.
+  </p>
+
   <h3>1.0-DEV25 [Development] (28/02/2013)</h3>
   <p>
     This snapshot includes a large number of behind-the-scenes changes to make QTIWorks easier to install and manage.
