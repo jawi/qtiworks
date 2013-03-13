@@ -34,6 +34,7 @@
 package uk.ac.ed.ph.jqtiplus.node.content;
 
 import uk.ac.ed.ph.jqtiplus.group.content.BlockGroup;
+import uk.ac.ed.ph.jqtiplus.group.content.FlowGroup;
 import uk.ac.ed.ph.jqtiplus.node.QtiNode;
 import uk.ac.ed.ph.jqtiplus.node.content.basic.Block;
 import uk.ac.ed.ph.jqtiplus.node.content.template.TemplateElement;
@@ -87,6 +88,7 @@ public final class ItemBody extends BodyElement {
         super(parent, QTI_CLASS_NAME);
 
         getNodeGroups().add(new BlockGroup(this));
+        getNodeGroups().add(new FlowGroup(this));
     }
 
     public List<Block> getBlocks() {
@@ -131,7 +133,7 @@ public final class ItemBody extends BodyElement {
                 templates.add(template);
             }
         }
-    
+
         return Collections.unmodifiableList(templates);
     }
 

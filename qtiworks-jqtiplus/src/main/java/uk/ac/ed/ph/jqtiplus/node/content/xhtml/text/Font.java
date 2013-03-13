@@ -33,8 +33,11 @@
  */
 package uk.ac.ed.ph.jqtiplus.node.content.xhtml.text;
 
+import uk.ac.ed.ph.jqtiplus.group.content.FlowGroup;
 import uk.ac.ed.ph.jqtiplus.node.QtiNode;
 import uk.ac.ed.ph.jqtiplus.node.content.basic.AbstractSimpleInline;
+import uk.ac.ed.ph.jqtiplus.node.content.basic.BlockStatic;
+import uk.ac.ed.ph.jqtiplus.node.content.basic.FlowStatic;
 import uk.ac.ed.ph.jqtiplus.node.content.basic.SimpleInline;
 import uk.ac.ed.ph.jqtiplus.node.content.xhtml.DeprecatedElement;
 
@@ -43,7 +46,7 @@ import uk.ac.ed.ph.jqtiplus.node.content.xhtml.DeprecatedElement;
  *
  * @author Jan Willem Janssen
  */
-public class Font extends AbstractSimpleInline implements SimpleInline, DeprecatedElement {
+public class Font extends AbstractSimpleInline implements SimpleInline, BlockStatic, FlowStatic, DeprecatedElement {
 
     private static final long serialVersionUID = -8120581624982369626L;
 
@@ -52,6 +55,7 @@ public class Font extends AbstractSimpleInline implements SimpleInline, Deprecat
 
     public Font(final QtiNode parent) {
         super(parent, QTI_CLASS_NAME);
-    }
 
+        getNodeGroups().add(new FlowGroup(this));
+    }
 }
